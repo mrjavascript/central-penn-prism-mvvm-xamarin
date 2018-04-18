@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="MyApp.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:utility="clr-namespace:MyApp.Utility;assembly=MyApp"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.LoginViewModel}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label FontSize="20" Text="LOGIN" />
+            <Label
+                IsVisible="{Binding HasErrors}"
+                Text="{Binding ErrorMessage}"
+                TextColor="Red" />
+            <Label Text="User Name" />
+            <Entry IsPassword="False" Text="{Binding UserName, Mode=TwoWay}" />
+            <Button Command="{Binding OnLoginCommand}" Text="Click me to login" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

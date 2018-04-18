@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="MyApp.Views.ItemsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:utility="clr-namespace:MyApp.Utility;assembly=MyApp"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BindingContext="{Binding Source={x:Static utility:DesignTimeViewModelLocator.ItemsViewModel}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Command="{Binding GoBackCommand}" Text="Go Back" />
+            <ListView ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding ItemId}" />
+                                <Label Text="{Binding ItemName}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Add Item" />
+            <Label Text="Item Name" />
+            <Entry IsPassword="False" Text="{Binding ItemName, Mode=TwoWay}" />
+            <Button Command="{Binding AddItemCommand}" Text="Add Item" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
